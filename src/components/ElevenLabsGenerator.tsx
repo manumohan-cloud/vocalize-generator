@@ -73,7 +73,10 @@ const ElevenLabsGenerator: React.FC = () => {
       const result = await generateSpeech(
         text,
         selectedVoice.voice_id,
-        selectedModel.id
+        selectedModel.id,
+        {
+          language: selectedLanguage?.id || 'en'
+        }
       );
       
       setAudioData(result);

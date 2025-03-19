@@ -1,4 +1,3 @@
-
 import { toast } from "sonner";
 
 // API key from environment or hardcoded (only for demo)
@@ -249,6 +248,7 @@ export const generateSpeech = async (
     similarity_boost?: number;
     style?: number;
     use_speaker_boost?: boolean;
+    language?: string;
   }
 ): Promise<ArrayBuffer> => {
   try {
@@ -267,6 +267,8 @@ export const generateSpeech = async (
           style: options?.style || 0,
           use_speaker_boost: options?.use_speaker_boost !== undefined ? options.use_speaker_boost : true,
         },
+        voice_id: voiceId,
+        language_id: options?.language
       }),
     });
 
