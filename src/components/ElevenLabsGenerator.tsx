@@ -13,6 +13,7 @@ import {
   Voice, 
   models, 
   topVoices,
+  fetchVoices,
   generateSpeech
 } from "../services/elevenlabs";
 import { toast } from "sonner";
@@ -39,10 +40,10 @@ const ElevenLabsGenerator: React.FC = () => {
   // Set voices based on language
   useEffect(() => {
     if (selectedLanguage) {
-      // In a real implementation, we would fetch voices based on the language
-      // For this demo, we'll use the same English voices for all languages
-      setVoices(topVoices.en);
-      setSelectedVoice(topVoices.en[0] || null);
+      // Get voices for the selected language or fall back to English
+      const languageVoices = topVoices[selectedLanguage.id] || topVoices.en;
+      setVoices(languageVoices);
+      setSelectedVoice(languageVoices[0] || null);
     } else {
       setVoices([]);
       setSelectedVoice(null);

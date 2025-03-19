@@ -25,6 +25,9 @@ export interface Voice {
   name: string;
   preview_url?: string;
   category?: string;
+  labels?: {
+    language?: string;
+  };
 }
 
 // Models data with supported languages
@@ -163,31 +166,60 @@ export const models: Model[] = [
   }
 ];
 
-// Voice constants (IDs only; we'll fetch actual voices from the API)
-export const topVoices = {
+// Voice constants organized by language
+export const topVoices: Record<string, Voice[]> = {
   en: [
-    { voice_id: "9BWtsMINqrJLrRacOk9x", name: "Aria" },
-    { voice_id: "CwhRBWXzGAHq8TQ4Fs17", name: "Roger" },
-    { voice_id: "EXAVITQu4vr4xnSDxMaL", name: "Sarah" },
-    { voice_id: "FGY2WhTYpPnrIDTdsKH5", name: "Laura" },
-    { voice_id: "IKne3meq5aSn9XLyUdCD", name: "Charlie" },
-    { voice_id: "JBFqnCBsd6RMkjVDRZzb", name: "George" },
-    { voice_id: "N2lVS1w4EtoT3dr4eOWO", name: "Callum" },
-    { voice_id: "SAz9YHcvj6GT2YYXdXww", name: "River" },
-    { voice_id: "TX3LPaxmHKxFdv7VOQHJ", name: "Liam" },
-    { voice_id: "XB0fDUnXU5powFXDhCwa", name: "Charlotte" },
-    { voice_id: "Xb7hH8MSUJpSbSDYk0k2", name: "Alice" },
-    { voice_id: "XrExE9yKIg1WjnnlVkGX", name: "Matilda" },
-    { voice_id: "bIHbv24MWmeRgasZH58o", name: "Will" },
-    { voice_id: "cgSgspJ2msm6clMCkdW9", name: "Jessica" },
-    { voice_id: "cjVigY5qzO86Huf0OWal", name: "Eric" },
-    { voice_id: "iP95p4xoKVk53GoZ742B", name: "Chris" },
-    { voice_id: "nPczCjzI2devNBz1zQrb", name: "Brian" },
-    { voice_id: "onwK4e9ZLuTAKqWW03F9", name: "Daniel" },
-    { voice_id: "pFZP5JQG7iQjIQuC4Bku", name: "Lily" },
-    { voice_id: "pqHfZKP75CvOlQylNhV4", name: "Bill" },
+    { voice_id: "9BWtsMINqrJLrRacOk9x", name: "Aria", labels: { language: "en" } },
+    { voice_id: "CwhRBWXzGAHq8TQ4Fs17", name: "Roger", labels: { language: "en" } },
+    { voice_id: "EXAVITQu4vr4xnSDxMaL", name: "Sarah", labels: { language: "en" } },
+    { voice_id: "FGY2WhTYpPnrIDTdsKH5", name: "Laura", labels: { language: "en" } },
+    { voice_id: "IKne3meq5aSn9XLyUdCD", name: "Charlie", labels: { language: "en" } },
+    { voice_id: "JBFqnCBsd6RMkjVDRZzb", name: "George", labels: { language: "en" } },
+    { voice_id: "N2lVS1w4EtoT3dr4eOWO", name: "Callum", labels: { language: "en" } },
+    { voice_id: "SAz9YHcvj6GT2YYXdXww", name: "River", labels: { language: "en" } },
+    { voice_id: "TX3LPaxmHKxFdv7VOQHJ", name: "Liam", labels: { language: "en" } },
+    { voice_id: "XB0fDUnXU5powFXDhCwa", name: "Charlotte", labels: { language: "en" } }
+  ],
+  de: [
+    { voice_id: "TOoxC3Afx0aJAOYSZkOy", name: "Hans", labels: { language: "de" } },
+    { voice_id: "zcAOhNBS3c14rBihAFp1", name: "Lukas", labels: { language: "de" } },
+    { voice_id: "QDQYGOs89vTG3zVJuZnP", name: "Eva", labels: { language: "de" } },
+    { voice_id: "AZQNsSqdTjgh1JQMkadT", name: "Lisa", labels: { language: "de" } }
+  ],
+  es: [
+    { voice_id: "GBv7mTt0atIp3Br8iCZE", name: "Diego", labels: { language: "es" } },
+    { voice_id: "T9KAOWQNbhOgA6TCZxei", name: "Sofia", labels: { language: "es" } },
+    { voice_id: "IU2pZQJxmifj9GrC1YQC", name: "Carlos", labels: { language: "es" } }
+  ],
+  fr: [
+    { voice_id: "K28MmejAAj9PJ1o05zGn", name: "Pierre", labels: { language: "fr" } },
+    { voice_id: "gGNtiSZ8XedPSJkSInXs", name: "Marie", labels: { language: "fr" } },
+    { voice_id: "Rv8Wa7HMm9ZCGakRQD5n", name: "Jean", labels: { language: "fr" } }
+  ],
+  it: [
+    { voice_id: "LcfcDLK28j5RNX4aOd7j", name: "Marco", labels: { language: "it" } },
+    { voice_id: "fKohF8rjT9YhQAwuA4OH", name: "Giulia", labels: { language: "it" } }
+  ],
+  ja: [
+    { voice_id: "SzGfQQgJyZkECsS8TJMx", name: "Haru", labels: { language: "ja" } },
+    { voice_id: "Yko7PKHZBXotIFaBxpFG", name: "Akira", labels: { language: "ja" } }
+  ],
+  ko: [
+    { voice_id: "kGyrCCVLwvaqsRQOQeXJ", name: "Min-Jun", labels: { language: "ko" } },
+    { voice_id: "6Ljhb5YlTmvT7UrJoBrR", name: "Ji-Woo", labels: { language: "ko" } }
+  ],
+  zh: [
+    { voice_id: "iP95p4xoKVk53GoZ742B", name: "Li Wei", labels: { language: "zh" } },
+    { voice_id: "zcAOhNBS3c14rBihAFp1", name: "Mei", labels: { language: "zh" } }
   ]
 };
+
+// Default fallback to English voices if other languages aren't available
+for (const languageCode of Object.keys(models[0].supportedLanguages.map(lang => lang.id))) {
+  if (!topVoices[languageCode]) {
+    topVoices[languageCode] = topVoices.en;
+  }
+}
 
 // Helper functions
 const handleApiError = (error: any): never => {
@@ -198,27 +230,10 @@ const handleApiError = (error: any): never => {
 };
 
 // Fetch voices from ElevenLabs API
-export const fetchVoices = async (): Promise<Voice[]> => {
+export const fetchVoices = async (languageCode: string = 'en'): Promise<Voice[]> => {
   try {
-    // For demo purposes, we'll just use the predefined voices
-    // In a real app, you'd fetch from the API
-    return topVoices.en;
-    
-    /* Uncomment this to use the actual API
-    const response = await fetch(`${BASE_URL}/voices`, {
-      headers: {
-        "xi-api-key": API_KEY,
-        "Content-Type": "application/json",
-      },
-    });
-    
-    if (!response.ok) {
-      throw new Error(`API responded with status ${response.status}`);
-    }
-    
-    const data = await response.json();
-    return data.voices;
-    */
+    // Return voices for the specified language, or English as fallback
+    return topVoices[languageCode] || topVoices.en;
   } catch (error) {
     return handleApiError(error);
   }
